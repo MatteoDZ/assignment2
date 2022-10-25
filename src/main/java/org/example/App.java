@@ -9,7 +9,7 @@ public class App
 {
     public static void main( String[] args )
     {
-
+        String culo = "Culo";
         String redisHost = "localhost";
         Integer redisPort = 6379;
 
