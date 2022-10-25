@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class Classes {
@@ -97,6 +96,7 @@ public class Classes {
 
     static class Cart {
         // Il carrello viene considerato una Hashtable con il nome del prodotto e un numero indicante la quantità
+        // É possibile esportare un Hashtable come JSON?
         // HashTable<String, Integer>
     }
 
@@ -152,6 +152,19 @@ public class Classes {
 
         public void setCompany(String company) {
             this.company = company;
+        }
+
+        // Metodi gestione prodotti
+        public void addProduct(String s, Product p) {
+            this.products.put(s,p);
+        }
+
+        public void removeProduct(String s) {
+            this.products.remove(s);
+        }
+
+        public void clearAllProducts() {
+            this.products.clear();
         }
     }
 

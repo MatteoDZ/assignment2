@@ -4,7 +4,6 @@ import org.example.Classes.*;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.Hashtable;
 
 /**
@@ -23,11 +22,29 @@ public class App
                 "800700600", Boolean.TRUE, new Date(), "Fondofuso", new Hashtable<String, Product>() {
         });
 
+        // Test generale metodi
         System.out.println(c.getName());
         c.setName("Madre");
         System.out.println(c.getName());
 
         System.out.println(m.email);
+        System.out.println(m.products);
+
+        m.addProduct("Maglione", new Product());
+        m.addProduct("Scrivania", new Product());
+        m.addProduct("Ferrari", new Product());
+
+        System.out.println(m.products);
+
+        m.removeProduct("Scrivania");
+        // La modifica di un prodotto viene effettuata modificando il prodotto e lasciano la stessa stringa
+        m.addProduct("Maglione", new Product());
+
+        System.out.println(m.getProducts());
+
+        m.clearAllProducts();
+
+        System.out.println(m.products);
 
 
         String culo = "Culo";
