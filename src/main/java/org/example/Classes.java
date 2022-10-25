@@ -90,8 +90,85 @@ public class Classes {
         }
     }
 
-    static class Product {
+    static class Product
+    {
+        int productId;
+        //Id for identification of the product || Unique
 
+        String category;
+        //The category in which the item has to be placed
+
+        String name;
+        //Displayed Name of the product
+
+        String description;
+        //Description of the product
+
+        String brandName;
+        //Brand name
+
+        String imageUrl;
+        //Displayed Image's Url
+
+        float price;
+        //Price displayed
+
+        int stock;
+        //If the product is in stock or not
+
+        public Product(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock)
+        {
+            this.productId = productId;
+            this.category = category;
+            this.name = name;
+            this.description = description;
+            this.brandName = brandName;
+            this.imageUrl = imageUrl;
+            this.price = price;
+            this.stock = stock;
+
+        }
+
+        //Metodi Getter
+        public int getProductId()
+        {
+            return productId;
+        }
+
+        public String getCategory()
+        {
+            return category;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public String getDescription()
+        {
+            return description;
+        }
+
+        public String getBrandName()
+        {
+            return brandName;
+        }
+
+        public String getImageUrl()
+        {
+            return imageUrl;
+        }
+
+        public float getPrice()
+        {
+            return price;
+        }
+
+        public int getStock()
+        {
+            return stock;
+        }
     }
 
     static class Cart {
@@ -165,6 +242,37 @@ public class Classes {
 
         public void clearAllProducts() {
             this.products.clear();
+        }
+    }
+
+    static class Book extends Product
+    {
+        String summary;
+
+        String language;
+
+        int numberPages;
+        public Book(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String summary, String language, int numberPages)
+        {
+            super( productId, category, name, description, brandName, imageUrl, price, stock);
+            this.summary = summary;
+            this.description = description;
+            this.numberPages = numberPages;
+        }
+
+        public String getSummary()
+        {
+            return summary;
+        }
+
+        public String getDescription()
+        {
+            return description;
+        }
+
+        public int getNumberPages()
+        {
+            return numberPages;
         }
     }
 

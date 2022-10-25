@@ -30,15 +30,15 @@ public class App
         System.out.println(m.email);
         System.out.println(m.products);
 
-        m.addProduct("Maglione", new Product());
+        /*m.addProduct("Maglione", new Product());
         m.addProduct("Scrivania", new Product());
-        m.addProduct("Ferrari", new Product());
+        m.addProduct("Ferrari", new Product());*/
 
         System.out.println(m.products);
 
         m.removeProduct("Scrivania");
         // La modifica di un prodotto viene effettuata modificando il prodotto e lasciano la stessa stringa
-        m.addProduct("Maglione", new Product());
+        /*m.addProduct("Maglione", new Product());*/
 
         System.out.println(m.getProducts());
 
