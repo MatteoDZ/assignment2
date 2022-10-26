@@ -7,8 +7,6 @@ import java.util.Hashtable;
 public class Classes {
 
     static class User {
-        // Integer che fungerà da primary key
-        int ID;
         // Nome dell'utente
         String name;
         // Cognome dell'utente
@@ -24,8 +22,7 @@ public class Classes {
         // Data di registrazione (Ha senso??)
         Date date_of_registration;
 
-        public User(int ID, String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration) {
-            this.ID = ID;
+        public User(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration) {
             this.name = name;
             this.surname = surname;
             this.email = email;
@@ -36,10 +33,6 @@ public class Classes {
         }
 
         // Metodi Getter
-        public int getID() {
-            return ID;
-        }
-
         public String getName() {
             return name;
         }
@@ -179,7 +172,63 @@ public class Classes {
 
     static class Order {
         // Un ordine è un'istantanea del carrello che viene creata quando viene effettuato l'acquisto dei prodotti nel carrello
-        // Cart cart;
+        Cart cart;
+        Float total;
+        String orderStatus;
+        Date orderDate;
+        Date shippingDate;
+        String shippingAddress;
+        String paymentType;
+
+        public Order(Cart cart, Float total, String orderStatus, Date orderDate, Date shippingDate, String shippingAddress, String paymentType) {
+            this.cart = cart;
+            this.total = total;
+            this.orderStatus = orderStatus;
+            this.orderDate = orderDate;
+            this.shippingDate = shippingDate;
+            this.shippingAddress = shippingAddress;
+            this.paymentType = paymentType;
+        }
+
+        public Cart getCart() {
+            return cart;
+        }
+
+        public Float getTotal() {
+            return total;
+        }
+
+        public String getOrderStatus() {
+            return orderStatus;
+        }
+
+        public Date getOrderDate() {
+            return orderDate;
+        }
+
+        public Date getShippingDate() {
+            return shippingDate;
+        }
+
+        public String getShippingAddress() {
+            return shippingAddress;
+        }
+
+        public String getPaymentType() {
+            return paymentType;
+        }
+
+        public void setOrderStatus(String orderStatus) {
+            this.orderStatus = orderStatus;
+        }
+
+        public void setShippingDate(Date shippingDate) {
+            this.shippingDate = shippingDate;
+        }
+
+        public void setShippingAddress(String shippingAddress) {
+            this.shippingAddress = shippingAddress;
+        }
     }
 
     static class Customer extends User {
@@ -189,8 +238,8 @@ public class Classes {
         // ArrayList di Order per tenere traccia degli ordini effettuati dal cliente
         ArrayList<Order> orders;
 
-        public Customer(int ID, String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, Cart cart, ArrayList<Order> orders) {
-            super(ID, name, surname, email, password, phone_number, active, date_of_registration);
+        public Customer(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, Cart cart, ArrayList<Order> orders) {
+            super(name, surname, email, password, phone_number, active, date_of_registration);
             this.cart = cart;
             this.orders = orders;
         }
@@ -211,9 +260,10 @@ public class Classes {
         String company;
         // Hashtable contente coppie di valori <NomeProdotto, Prodotto> TODO: Ha più senso usare Hashtable o Hashmap?
         Hashtable<String, Product> products;
+        ArrayList<Integer> products_alt; // Alternativa per gestire meglio i prodotti
 
-        public Manager(int ID, String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, String company, Hashtable<String, Product> products) {
-            super(ID, name, surname, email, password, phone_number, active, date_of_registration);
+        public Manager(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, String company, Hashtable<String, Product> products) {
+            super(name, surname, email, password, phone_number, active, date_of_registration);
             this.company = company;
             this.products = products;
         }
