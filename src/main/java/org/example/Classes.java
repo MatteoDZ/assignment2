@@ -260,6 +260,11 @@ public class Classes {
             this.numberPages = numberPages;
         }
 
+        public void setSummary(String summary)
+        {
+            this.summary = summary;
+        }
+
         public String getSummary()
         {
             return summary;
@@ -276,4 +281,252 @@ public class Classes {
         }
     }
 
+    public class Car extends Product
+    {
+
+        int doors;
+
+        int seats;
+
+        String engineType;
+
+        String displacement;
+
+        String emissionClass;
+
+        String color;
+
+        int kms;
+
+        public Car(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, int doors, int seats, String engineType, String displacement, String emissionClass, String color, int kms) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock);
+            this.doors = doors;
+            this.seats = seats;
+            this.engineType = engineType;
+            this.displacement = displacement;
+            this.emissionClass = emissionClass;
+            this.color = color;
+            this.kms = kms;
+        }
+
+        public int getDoors() {
+            return doors;
+        }
+
+        public void setDoors(int doors) {
+            this.doors = doors;
+        }
+
+        public int getSeats() {
+            return seats;
+        }
+
+        public void setSeats(int seats) {
+            this.seats = seats;
+        }
+
+        public String getEngineType() {
+            return engineType;
+        }
+
+        public void setEngineType(String engineType) {
+            this.engineType = engineType;
+        }
+
+        public String getDisplacement() {
+            return displacement;
+        }
+
+        public void setDisplacement(String displacement) {
+            this.displacement = displacement;
+        }
+
+        public String getEmissionClass() {
+            return emissionClass;
+        }
+
+        public void setEmissionClass(String emissionClass) {
+            this.emissionClass = emissionClass;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public int getKms() {
+            return kms;
+        }
+
+        public void setKms(int kms) {
+            this.kms = kms;
+        }
+    }
+
+    public class Furniture extends Product
+    {
+        int length;
+        int height;
+        int width;
+        String color;
+        int numberOfDrawers;
+
+        public Furniture(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, int length, int height, int width, String color, int numberOfDrawers) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock);
+            this.length = length;
+            this.height = height;
+            this.width = width;
+            this.color = color;
+            this.numberOfDrawers = numberOfDrawers;
+        }
+
+        public int getLength() {
+            return length;
+        }
+
+        public void setLength(int length) {
+            this.length = length;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public int getNumberOfDrawers() {
+            return numberOfDrawers;
+        }
+
+        public void setNumberOfDrawers(int numberOfDrawers) {
+            this.numberOfDrawers = numberOfDrawers;
+        }
+    }
+
+    public class Laptop extends Product
+    {
+        int diskSpace;
+        int screenSize;
+        String diskType;
+        String cpuType;
+        String gpuType;
+        String oS;
+
+        public Laptop(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, int diskSpace, int screenSize, String diskType, String cpuType, String gpuType, String oS) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock);
+            this.diskSpace = diskSpace;
+            this.screenSize = screenSize;
+            this.diskType = diskType;
+            this.cpuType = cpuType;
+            this.gpuType = gpuType;
+            this.oS = oS;
+        }
+
+        public int getDiskSpace() {
+            return diskSpace;
+        }
+
+        public void setDiskSpace(int diskSpace) {
+            this.diskSpace = diskSpace;
+        }
+
+        public int getScreenSize() {
+            return screenSize;
+        }
+
+        public void setScreenSize(int screenSize) {
+            this.screenSize = screenSize;
+        }
+
+        public String getDiskType() {
+            return diskType;
+        }
+
+        public void setDiskType(String diskType) {
+            this.diskType = diskType;
+        }
+
+        public String getCpuType() {
+            return cpuType;
+        }
+
+        public void setCpuType(String cpuType) {
+            this.cpuType = cpuType;
+        }
+
+        public String getGpuType() {
+            return gpuType;
+        }
+
+        public void setGpuType(String gpuType) {
+            this.gpuType = gpuType;
+        }
+
+        public String getoS() {
+            return oS;
+        }
+
+        public void setoS(String oS) {
+            this.oS = oS;
+        }
+    }
+
+    public class Beverage extends Product
+    {
+        String beverageType;
+        float volumeInMl;
+        float alcoholPercentage;
+
+        public Beverage(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String beverageType, float volumeInMl, float alcoholPercentage) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock);
+            this.beverageType = beverageType;
+            this.volumeInMl = volumeInMl;
+            this.alcoholPercentage = alcoholPercentage;
+        }
+
+        public String getBeverageType() {
+            return beverageType;
+        }
+
+        public void setBeverageType(String beverageType) {
+            this.beverageType = beverageType;
+        }
+
+        public float getVolumeInMl() {
+            return volumeInMl;
+        }
+
+        public void setVolumeInMl(float volumeInMl) {
+            this.volumeInMl = volumeInMl;
+        }
+
+        public float getAlcoholPercentage() {
+            return alcoholPercentage;
+        }
+
+        public void setAlcoholPercentage(float alcoholPercentage) {
+            this.alcoholPercentage = alcoholPercentage;
+        }
+    }
 }
