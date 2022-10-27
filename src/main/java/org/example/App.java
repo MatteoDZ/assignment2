@@ -15,11 +15,11 @@ public class App
     {
         // Test creazione di un nuovo cliente e un nuovo manager
         Customer c = new Customer("Babbo", "Natale", "bn@gmail.com", "HoHoHo",
-                "1234", Boolean.TRUE, new Date(), new Cart(), new ArrayList<Order>());
+                "1234", Boolean.TRUE, new Date(), new Cart(), new ArrayList<Order>(), "Porco", "Cane");
 
         Manager m = new Manager("Giorgio", "Mastrota", "CavalierCustode@AcciaioInox.it", "Batteriadipentole",
                 "800700600", Boolean.TRUE, new Date(), "Fondofuso", new Hashtable<String, Product>() {
-        });
+        }, "Porca", "Maiala");
 
         // Test generale metodi
         System.out.println(c.getName());

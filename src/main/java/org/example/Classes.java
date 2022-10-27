@@ -22,7 +22,10 @@ public class Classes {
         // Data di registrazione (Ha senso??)
         Date date_of_registration;
 
-        public User(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration) {
+        String address;
+        String country;
+
+        public User(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration,String address, String country) {
             this.name = name;
             this.surname = surname;
             this.email = email;
@@ -30,6 +33,8 @@ public class Classes {
             this.phone_number = phone_number;
             this.active = active;
             this.date_of_registration = date_of_registration;
+            this.address = address;
+            this.country = country;
         }
 
         // Metodi Getter
@@ -81,6 +86,22 @@ public class Classes {
         public void setPhone_number(String phone_number) {
             this.phone_number = phone_number;
         }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
     }
 
     static class Product
@@ -93,6 +114,8 @@ public class Classes {
 
         String name;
         //Displayed Name of the product
+
+        String shortDescription;
 
         String description;
         //Description of the product
@@ -109,7 +132,7 @@ public class Classes {
         int stock;
         //If the product is in stock or not
 
-        public Product(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock)
+        public Product(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String shortDescription)
         {
             this.productId = productId;
             this.category = category;
@@ -119,7 +142,7 @@ public class Classes {
             this.imageUrl = imageUrl;
             this.price = price;
             this.stock = stock;
-
+            this.shortDescription = shortDescription;
         }
 
         //Metodi Getter
@@ -162,6 +185,30 @@ public class Classes {
         {
             return stock;
         }
+
+        public String getShortDescription() {
+            return shortDescription;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setShortDescription(String shortDescription) {
+            this.shortDescription = shortDescription;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public void setPrice(float price) {
+            this.price = price;
+        }
+
+        public void setStock(int stock) {
+            this.stock = stock;
+        }
     }
 
     static class Cart {
@@ -173,20 +220,23 @@ public class Classes {
     static class Order {
         // Un ordine è un'istantanea del carrello che viene creata quando viene effettuato l'acquisto dei prodotti nel carrello
         Cart cart;
+        // ArrayList<Products>
         Float total;
         String orderStatus;
         Date orderDate;
         Date shippingDate;
         String shippingAddress;
+        String shippingCountry;
         String paymentType;
 
-        public Order(Cart cart, Float total, String orderStatus, Date orderDate, Date shippingDate, String shippingAddress, String paymentType) {
+        public Order(Cart cart, Float total, String orderStatus, Date orderDate, Date shippingDate, String shippingAddress, String paymentType, String shippingCountry) {
             this.cart = cart;
             this.total = total;
             this.orderStatus = orderStatus;
             this.orderDate = orderDate;
             this.shippingDate = shippingDate;
             this.shippingAddress = shippingAddress;
+            this.shippingCountry = shippingCountry;
             this.paymentType = paymentType;
         }
 
@@ -226,8 +276,8 @@ public class Classes {
             this.shippingDate = shippingDate;
         }
 
-        public void setShippingAddress(String shippingAddress) {
-            this.shippingAddress = shippingAddress;
+        public String getShippingCountry() {
+            return shippingCountry;
         }
     }
 
@@ -238,8 +288,8 @@ public class Classes {
         // ArrayList di Order per tenere traccia degli ordini effettuati dal cliente
         ArrayList<Order> orders;
 
-        public Customer(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, Cart cart, ArrayList<Order> orders) {
-            super(name, surname, email, password, phone_number, active, date_of_registration);
+        public Customer(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, Cart cart, ArrayList<Order> orders, String address, String country) {
+            super(name, surname, email, password, phone_number, active, date_of_registration, address, country);
             this.cart = cart;
             this.orders = orders;
         }
@@ -262,8 +312,8 @@ public class Classes {
         Hashtable<String, Product> products;
         ArrayList<Integer> products_alt; // Alternativa per gestire meglio i prodotti
 
-        public Manager(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, String company, Hashtable<String, Product> products) {
-            super(name, surname, email, password, phone_number, active, date_of_registration);
+        public Manager(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration, String company, Hashtable<String, Product> products, String address, String country) {
+            super(name, surname, email, password, phone_number, active, date_of_registration, address, country);
             this.company = company;
             this.products = products;
         }
@@ -302,11 +352,11 @@ public class Classes {
         String language;
 
         int numberPages;
-        public Book(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String summary, String language, int numberPages)
-        {
-            super( productId, category, name, description, brandName, imageUrl, price, stock);
+
+        public Book(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String shortDescription, String summary, String language, int numberPages) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock, shortDescription);
             this.summary = summary;
-            this.description = description;
+            this.language = language;
             this.numberPages = numberPages;
         }
 
@@ -348,8 +398,8 @@ public class Classes {
 
         int kms;
 
-        public Car(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, int doors, int seats, String engineType, String displacement, String emissionClass, String color, int kms) {
-            super(productId, category, name, description, brandName, imageUrl, price, stock);
+        public Car(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String shortDescription, int doors, int seats, String engineType, String displacement, String emissionClass, String color, int kms) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock, shortDescription);
             this.doors = doors;
             this.seats = seats;
             this.engineType = engineType;
@@ -424,8 +474,8 @@ public class Classes {
         String color;
         int numberOfDrawers;
 
-        public Furniture(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, int length, int height, int width, String color, int numberOfDrawers) {
-            super(productId, category, name, description, brandName, imageUrl, price, stock);
+        public Furniture(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String shortDescription, int length, int height, int width, String color, int numberOfDrawers) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock, shortDescription);
             this.length = length;
             this.height = height;
             this.width = width;
@@ -483,8 +533,8 @@ public class Classes {
         String gpuType;
         String oS;
 
-        public Laptop(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, int diskSpace, int screenSize, String diskType, String cpuType, String gpuType, String oS) {
-            super(productId, category, name, description, brandName, imageUrl, price, stock);
+        public Laptop(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String shortDescription, int diskSpace, int screenSize, String diskType, String cpuType, String gpuType, String oS) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock, shortDescription);
             this.diskSpace = diskSpace;
             this.screenSize = screenSize;
             this.diskType = diskType;
@@ -548,8 +598,8 @@ public class Classes {
         float volumeInMl;
         float alcoholPercentage;
 
-        public Beverage(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String beverageType, float volumeInMl, float alcoholPercentage) {
-            super(productId, category, name, description, brandName, imageUrl, price, stock);
+        public Beverage(int productId, String category, String name, String description, String brandName, String imageUrl, float price, int stock, String shortDescription, String beverageType, float volumeInMl, float alcoholPercentage) {
+            super(productId, category, name, description, brandName, imageUrl, price, stock, shortDescription);
             this.beverageType = beverageType;
             this.volumeInMl = volumeInMl;
             this.alcoholPercentage = alcoholPercentage;
