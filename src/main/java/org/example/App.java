@@ -11,8 +11,11 @@ import java.util.*;
  */
 public class App 
 {
+    private static ConnectionsManager cManager = new ConnectionsManager();
+
     public static void main( String[] args )
     {
+        /*
         // Test creazione di un nuovo cliente e un nuovo manager
         Customer c = new Customer("Babbo", "Natale", "bn@gmail.com", "HoHoHo",
                 "1234", Boolean.TRUE, new Date(), new Cart(), new ArrayList<Order>(), "Porco", "Cane");
@@ -29,15 +32,15 @@ public class App
         System.out.println(m.getEmail());
         System.out.println(m.getProducts() + "\n");
 
-        /*m.addProduct("Maglione", new Product());
+        m.addProduct("Maglione", new Product());
         m.addProduct("Scrivania", new Product());
-        m.addProduct("Ferrari", new Product());*/
+        m.addProduct("Ferrari", new Product());
 
         //System.out.println(m.products);
 
         m.removeProduct("Scrivania");
         // La modifica di un prodotto viene effettuata modificando il prodotto e lasciano la stessa stringa
-        /*m.addProduct("Maglione", new Product());*/
+        m.addProduct("Maglione", new Product());
 
         //System.out.println(m.getProducts());
 
@@ -73,5 +76,34 @@ public class App
             jedis.set("Hello", "World");
         }
         pool.close();
+        */
+        Welcome();
+
+    }
+
+    public static void Welcome()
+    {
+        // Scanner per input da tastiera
+        Scanner scanner = new Scanner(System.in);
+        int cmd = - 1;
+        System.out.println("Benvenuto in Ecommerce!");
+        System.out.println("Digita un numero per effettuare una delle seguenti azioni:" + "\n" + "-> Register : 1" + "\n" + "-> LogIn : 2" + "\n" + "-> View : 3");
+        cmd = Integer.parseInt(scanner.nextLine());
+        switch (cmd)
+        {
+            case 1 :
+                cManager.Register();
+                break;
+            case 2 :
+                cManager.LogIn();
+                break;
+            case 3 :
+                cManager.View();
+                break;
+            default:
+                System.out.println("Comando non valido.");
+                Welcome();
+        }
+
     }
 }
