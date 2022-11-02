@@ -26,8 +26,8 @@ public class App
         c.setName("Madre");
         System.out.println(c.getName());
 
-        System.out.println(m.email);
-        System.out.println(m.products + "\n");
+        System.out.println(m.getEmail());
+        System.out.println(m.getProducts() + "\n");
 
         /*m.addProduct("Maglione", new Product());
         m.addProduct("Scrivania", new Product());

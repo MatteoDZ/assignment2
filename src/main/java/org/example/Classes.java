@@ -5,104 +5,11 @@ import java.util.Date;
 import java.util.Hashtable;
 
 public class Classes {
+/*
 
-    static class User {
-        // Nome dell'utente
-        String name;
-        // Cognome dell'utente
-        String surname;
-        // Email dell'utente || Unique
-        String email;
-        // Password
-        String password;
-        // Numero di telefono dell'utente || Unique
-        String phone_number;
-        // Stato dell'utente
-        Boolean active;
-        // Data di registrazione (Ha senso??)
-        Date date_of_registration;
 
-        String address;
-        String country;
+    //class user
 
-        public User(String name, String surname, String email, String password, String phone_number, Boolean active, Date date_of_registration,String address, String country) {
-            this.name = name;
-            this.surname = surname;
-            this.email = email;
-            this.password = password;
-            this.phone_number = phone_number;
-            this.active = active;
-            this.date_of_registration = date_of_registration;
-            this.address = address;
-            this.country = country;
-        }
-
-        // Metodi Getter
-        public String getName() {
-            return name;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public Boolean getActive() {
-            return active;
-        }
-
-        public Date getDate_of_registration() {
-            return date_of_registration;
-        }
-
-        public String getPhone_number() {
-            return phone_number;
-        }
-
-        // Metodi Setter
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setSurname(String surname) {
-            this.surname = surname;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public void setPhone_number(String phone_number) {
-            this.phone_number = phone_number;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public String getCountry() {
-            return country;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public void setCountry(String country) {
-            this.country = country;
-        }
-    }
 
     static class Product
     {
@@ -629,4 +536,7 @@ public class Classes {
             this.alcoholPercentage = alcoholPercentage;
         }
     }
+
+
+ */
 }
