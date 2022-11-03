@@ -6,10 +6,32 @@ import java.util.Scanner;
 public class ConnectionsManager {
 
     private Scanner input = new Scanner(System.in);
-    public ConnectionsManager()
-    {
+    private String currentUser;
 
+    public int FirstAccessPossibleCommands()
+    {
+        int cmd = 0;
+        boolean validCommand = false;
+        while(!validCommand) {
+            System.out.println("Possible actions:" + "\n" +
+                    "1) Register" + "\n" +
+                    "2) Customer Login" + "\n" +
+                    "3) Manager Login" + "\n" +
+                    "4) Continue without Login" + "\n" +
+                    "5) Log out");
+            cmd = Integer.parseInt(input.nextLine());
+            if(cmd <= 0 || cmd >= 6)
+            {
+                // It will loop again and tell the possible actions
+                System.out.println("The selected command is not valid.");
+            } else {
+                // The command is valid, therefore we can exit from the while
+                validCommand = true;
+            }
+        }
+        return cmd;
     }
+
     public void Register()
     {
         String name = "";
@@ -50,12 +72,14 @@ public class ConnectionsManager {
             statement.setString(7, address);
             statement.setString(8, country);
             statement.execute();
+            System.out.println("Registrazione effettuata con successo!");
         } catch ( SQLException sqle){
             System.out.println(sqle);
         }
     }
 
-    public void LogIn()
+
+    public boolean LogIn(String mode)
     {
         String email = "";
         String password = "";
@@ -64,7 +88,7 @@ public class ConnectionsManager {
         email = input.nextLine();
         System.out.println("Insert the password:");
         password = input.nextLine();
-        String sqlQuery = "SELECT * FROM Customer WHERE Email = '"  + email + "'";
+        String sqlQuery = "SELECT * FROM " + mode + " WHERE Email = '"  + email + "'";
 
         try(
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "password");
@@ -75,14 +99,18 @@ public class ConnectionsManager {
             while (resultSet.next()) {
                 String foundPassword = resultSet.getString("Password");
                 if (password.equals(foundPassword) && !resultSet.wasNull()) {
+                    currentUser = email;
                     System.out.println("Welcome " + resultSet.getString("Name") + " " + resultSet.getString("surname") + " !");
-                } else {
-                    System.out.println("The email and the password are wrong, try again.");
+                    return true;
                 }
             }
         } catch ( SQLException sqle){
+            //Error
             System.out.println(sqle);
         }
+        //Only if it is wrong we arrive here
+        System.out.println("The email and the password are wrong, try again.");
+        return false;
     }
 
     public void View()
@@ -146,5 +174,10 @@ public class ConnectionsManager {
         } catch ( SQLException sqle){
             System.out.println(sqle);
         }
+    }
+
+    public String GetCurrentUser()
+    {
+        return currentUser;
     }
 }

@@ -5,13 +5,17 @@ import org.example.Classes.*;
 
 import java.util.*;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     private static ConnectionsManager cManager = new ConnectionsManager();
+    /*
+    To determine if he's a customer, a manager, a guest or he wants to disconnect
+    If He wants to disconnect the connectionState becomes -2 and exits
+    If He is a Customer the connectionState will be set to 0
+    If He is a Manager the connectionState will be set to 1
+    If He is a Guest the connectionState will be set to 2
+    */
+    private static int connectionState = -1;
 
     public static void main( String[] args )
     {
@@ -77,33 +81,52 @@ public class App
         }
         pool.close();
         */
-        Welcome();
-
-    }
-
-    public static void Welcome()
-    {
-        // Scanner per input da tastiera
-        Scanner scanner = new Scanner(System.in);
-        int cmd = - 1;
         System.out.println("Benvenuto in Ecommerce!");
-        System.out.println("Digita un numero per effettuare una delle seguenti azioni:" + "\n" + "-> Register : 1" + "\n" + "-> LogIn : 2" + "\n" + "-> View : 3");
-        cmd = Integer.parseInt(scanner.nextLine());
-        switch (cmd)
-        {
-            case 1 :
-                cManager.Register();
-                break;
-            case 2 :
-                cManager.LogIn();
-                break;
-            case 3 :
-                cManager.View();
-                break;
-            default:
-                System.out.println("Comando non valido.");
-                Welcome();
+        while (connectionState == -1) {
+            int mode = cManager.FirstAccessPossibleCommands();
+            switch (mode) {
+                case 1:
+                    cManager.Register();
+                    break;
+                case 2:
+                    if(cManager.LogIn("customer"))
+                        connectionState = 0;
+                    break;
+                case 3:
+                    //He tries to log in as a manager
+                    if(cManager.LogIn("manager"))
+                        connectionState = 1;
+                    break;
+                case 4:
+                    //He is a guest
+                    connectionState = 2;
+                    break;
+                case 5:
+                    //He wants to log out
+                    connectionState = -2;
+                    break;
+                default:
+                    System.out.println("Error in the system.");
+            }
         }
 
+        //After the initial connection and log in or log out
+        switch (connectionState)
+        {
+            case -2:
+                System.out.println("Goodbye!");
+                return;
+            case 0:
+                System.out.println("Customer " + cManager.GetCurrentUser());
+                break;
+            case 1:
+                System.out.println("Manager " + cManager.GetCurrentUser());
+                break;
+            case 2:
+                System.out.println("Guest");
+                break;
+            default:
+                System.out.println("Error in the system.");
+        }
     }
 }
